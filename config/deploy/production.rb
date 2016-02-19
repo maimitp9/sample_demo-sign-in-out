@@ -18,9 +18,9 @@ server 'ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com', user: 'ubuntu',
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{ubuntu@ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com}, my_property: :my_value
-role :web, %w{ubuntu@ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com}, other_property: :other_value
-role :db,  %w{ubuntu@ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com}
+role :app, %w{ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com}, my_property: :my_value
+role :web, %w{ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com}, other_property: :other_value
+role :db,  %w{ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com}
 
 set :ssh_options, { keys: %w(/home/thinkbiz/RailsWorkspace/maimit.pem) }
 

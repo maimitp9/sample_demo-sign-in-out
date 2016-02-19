@@ -32,6 +32,7 @@ gem 'faker', '1.1.2'
 #for pagination
 gem 'will_paginate', '3.0.4'
 gem 'will_paginate-bootstrap'
+gem 'net-ssh', '3.0.2'
 
 ## Capistrano
 gem 'capistrano', '3.4.0'
