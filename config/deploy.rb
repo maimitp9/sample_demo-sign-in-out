@@ -1,7 +1,7 @@
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'bundler/deployment'
-require 'whenever/capistrano'
+
 
 SSHKit.config.command_map[:rake] = 'bundle exec rake'
 SSHKit.config.command_map[:rails] = 'bundle exec rails'
@@ -9,7 +9,7 @@ SSHKit.config.command_map[:rails] = 'bundle exec rails'
 lock '3.4.0'
 
 set :application, 'MaimitBlogs'
-set :repo_url, 'https://github.com/maimitp9/sample_demo-sign-in-out.git'
+set :repo_url, 'git@github.com:maimitp9/sample_demo-sign-in-out.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -65,7 +65,7 @@ desc 'Restart application'
       # end
     end
   end
-  
+
    after :finishing, 'deploy:cleanup'
 
   desc 'Update the crontab file'
