@@ -3,8 +3,7 @@ set :stage, :production
 # ======================
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
-
-server '52.193.239.14', user: 'ubuntu', roles: %w(app db web), my_property: :my_value
+server 'ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com', user: 'ubuntu', roles: %w(web app db), my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
@@ -18,9 +17,9 @@ server '52.193.239.14', user: 'ubuntu', roles: %w(app db web), my_property: :my_
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w(ubuntu@52.193.239.14)
-role :web, %w(ubuntu@52.193.239.14)
-role :db,  %w(ubuntu@52.193.239.14)
+role :app, %w(ubuntu@ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com)
+role :web, %w(ubuntu@ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com)
+role :db,  %w(ubuntu@ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com)
 
 set :ssh_options, { keys: %w(/home/thinkbiz/RailsWorkspace/maimit.pem) }
 

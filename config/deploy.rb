@@ -1,8 +1,10 @@
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'bundler/deployment'
+require 'whenever/capistrano'
 
-
+SSHKit.config.command_map[:rake] = 'bundle exec rake'
+SSHKit.config.command_map[:rails] = 'bundle exec rails'
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
@@ -30,7 +32,7 @@ set :user, 'ubuntu'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+set :linked_files, %w(config/database.yml .env)
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -45,7 +47,15 @@ set :stages, %w(production)
 set :keep_releases, 10
 
 namespace :deploy do
+desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
 
+  after :publishing, :restart
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
@@ -53,6 +63,18 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+    end
+  end
+  
+   after :finishing, 'deploy:cleanup'
+
+  desc 'Update the crontab file'
+  task :update_crontab do
+    on roles(:web, :app, :db) do
+      execute 'crontab -r', raise_on_non_zero_exit: false
+      within release_path do
+        execute :bundle, :exec, 'whenever --update-crontab', raise_on_non_zero_exit: false
+      end
     end
   end
 
