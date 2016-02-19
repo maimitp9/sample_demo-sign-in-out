@@ -1,8 +1,8 @@
-require 'bundler/capistrano'
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'bundler/deployment'
-require 'whenever/capistrano'
+
+
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
