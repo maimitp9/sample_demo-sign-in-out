@@ -33,6 +33,14 @@ gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'will_paginate-bootstrap'
 
+## Capistrano
+gem 'capistrano', '3.4.0'
+gem 'capistrano-ext'
+gem 'capistrano-rvm'
+gem 'capistrano-sidekiq'
+gem 'capistrano-rails',   '~> 1.1', require: false
+gem 'capistrano-bundler', '~> 1.1', require: false
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
