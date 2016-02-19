@@ -1,3 +1,4 @@
+require 'bundler/capistrano'
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'bundler/deployment'
@@ -37,7 +38,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :stages, %w(production)
-set :rails_env, 'development'
+set :rails_env, 'production'
 set :deploy_via, :copy
 
 # Default value for keep_releases is 5

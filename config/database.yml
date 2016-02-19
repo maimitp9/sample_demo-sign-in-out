@@ -6,14 +6,14 @@
 #
 
 
-development:
-  adapter: postgresql
-  database: user
-  host: ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com
-  pool: 5
-  username: user
-  password: "user123"
-  port: 5432
+#development:
+ # adapter: postgresql
+ # database: user
+ # host: ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com
+ # pool: 5
+ # username: user
+ # password: "user123"
+ # port: 5432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,11 +27,11 @@ development:
   #password: "user123"
   #port: 5432
 
-#production:
- #   adapter: postgresql
-  #  database: user
-  #  host: localhost
-  #  pool: 5
-  # username: user
-  #  password: "user123"
-  #  port: 5432
+production:
+    adapter: postgresql
+    database: user
+    host: ec2-52-193-239-14.ap-northeast-1.compute.amazonaws.com
+    pool: 5
+   username: user
+    password: "user123"
+    port: 5432
