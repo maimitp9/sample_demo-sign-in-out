@@ -38,8 +38,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :stages, %w(production)
-set :rails_env, 'production'
-set :deploy_via, :copy
+#set :rails_env, 'production'
+#set :deploy_via, :copy
 
 # Default value for keep_releases is 5
 set :keep_releases, 10
